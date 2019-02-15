@@ -12,15 +12,17 @@ public class MyArrayList<T> implements ArrayList<T> {
     private int capacity;
 
     public MyArrayList(int capacity) {
-        this.data = (T[]) new Object[capacity];
-        this.size = 0;
-        this.capacity = capacity;
+        setFields(capacity);
     }
 
     public MyArrayList() {
-        this.capacity = 10;
-        this.size = 0;
+        setFields(10);
+    }
+
+    private void setFields(int capacity) {
         this.data = (T[]) new Object[capacity];
+        this.size = 0;
+        this.capacity = capacity;
     }
 
     /**
@@ -268,7 +270,6 @@ public class MyArrayList<T> implements ArrayList<T> {
             }
         }
         data = newData;
-        size = data.length;
     }
 
     /**
@@ -334,9 +335,7 @@ public class MyArrayList<T> implements ArrayList<T> {
         }
     }
 
-/* У меня метод ниже сначала удаляет пустые элементы двух массивов,
-а затем уже сравнивает эти два массива.
- */
+// У меня метод ниже не учитывает пустые элементы при сравнении двух массивов.
 
     /**
      * <p>compares arrays not only by the number of elements, but also by their content</p>
@@ -345,14 +344,15 @@ public class MyArrayList<T> implements ArrayList<T> {
      * @return true if arrays are equal, false if they are not
      */
     public boolean equals(MyArrayList<T> myArrayList) {
-        trimToSize();
-        myArrayList.trimToSize();
-        T[] anotherData = myArrayList.getData();
-        if (size != myArrayList.getSize())
+        MyArrayList<T> firstArrayList = clone();
+        MyArrayList<T> secondArrayList = myArrayList.clone();
+        firstArrayList.trimToSize();
+        secondArrayList.trimToSize();
+        if (firstArrayList.getSize() != secondArrayList.getSize())
             return false;
         else
-            for (int i = 0; i < size; i++) {
-                if (!data[i].equals(anotherData[i])) {
+            for (int i = 0; i < firstArrayList.getSize(); i++) {
+                if (!firstArrayList.getElementAt(i).equals(secondArrayList.getElementAt(i))) {
                     return false;
                 }
             }

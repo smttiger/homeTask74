@@ -185,20 +185,20 @@ public class MyArrayListTest {
 
     @Test
     public void equalsTest() {
-        MyArrayList<Integer> firstmyArrayList = new MyArrayList<Integer>();
-        firstmyArrayList.pushFront(1);
-        firstmyArrayList.pushBack(2);
-        firstmyArrayList.pushBack(3);
+        MyArrayList<Integer> firstMyArrayList = new MyArrayList<Integer>();
+        firstMyArrayList.pushFront(1);
+        firstMyArrayList.pushBack(2);
+        firstMyArrayList.pushBack(3);
 
-        MyArrayList<Integer> secondmyArrayList = new MyArrayList<Integer>();
-        secondmyArrayList.pushFront(1);
-        secondmyArrayList.pushBack(2);
-        secondmyArrayList.pushBack(3);
+        MyArrayList<Integer> secondMyArrayList = new MyArrayList<Integer>();
+        secondMyArrayList.pushFront(1);
+        secondMyArrayList.pushBack(2);
+        secondMyArrayList.pushBack(3);
 
-        Assert.assertTrue(firstmyArrayList.equals(secondmyArrayList));
+        Assert.assertTrue(firstMyArrayList.equals(secondMyArrayList));
 
-        secondmyArrayList.pushBack(4);
-        Assert.assertFalse(firstmyArrayList.equals(secondmyArrayList));
+        secondMyArrayList.pushBack(4);
+        Assert.assertFalse(firstMyArrayList.equals(secondMyArrayList));
     }
 
     @Test
